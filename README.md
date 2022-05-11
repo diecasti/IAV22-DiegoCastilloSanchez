@@ -24,5 +24,16 @@ Esta aplicación tomaria inspiracion de los simuladores como los *Sims* u otros 
 
 ## Descripcion:
 
-  La aplicacion es una simulación de familias de peces que viven en un acuario, su objetivo es reproducirse y conseguir todo el territorio del acuario o extinguir a la otra familia. Para ello llevaran a cabo las necesidades basicas de un animal, comer, moverse, conseguir territorio, atacar a la otra especie y reproducirse.
+  La aplicacion es una simulación de familias de peces que viven en un acuario, su objetivo es reproducirse y conseguir todo el territorio del acuario o extinguir a la otra familia. Para ello llevaran a cabo las necesidades basicas de un animal, comer su dieta, moverse, conseguir territorio, atacar a la otra especie y reproducirse.
   Se podran modificar los parametros de las prioridades de los peces apra conseguir conductas distintas.
+
+## Elementos del Acuario
+
+El acuario se formara a traves de una malla que simula el sustrato marino con sus accidentes propios. El Mapa estara dividido en cubos que dividiran el mapa en elementos ams sencillos con los que trabajar (y generar el mapa), estos elementos son:
+
+ - Algas: Aportan alimento del tipo vegetal a los peces con la dieta Hérbibora.
+ - Placton: Aportan alimento del tipo proteina a los peces con la dieta Carnivora.
+ - Rocas de deshove: Lugar al que acuden los peces para reproducirse, los alevines preferiran mantenerse cerca de estas zonas ya que son lugares seguros.
+ - Zona abierta: Espacio abierto sin ningún elemento, los peces habitaran estas zonas para ganar territorio o las usaran de paso.
+
+
