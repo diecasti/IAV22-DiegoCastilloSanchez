@@ -18,3 +18,11 @@ Posibles añadidos:
   - Un mapa de inlfuencia que se sumaria arbol de comportamientos para definir las necesidades y prioridades de los agentes, como pueden ser el control de areas de recursos beneficiosos
 
 Esta aplicación tomaria inspiracion de los simuladores como los *Sims* u otros simuladores de civilizaciones automaticas como *WorldBox* o *RimWorld*.
+
+
+# DOCUMENTACION
+
+## Descripcion:
+
+  La aplicacion es una simulación de familias de peces que viven en un acuario, su objetivo es reproducirse y conseguir todo el territorio del acuario o extinguir a la otra familia. Para ello llevaran a cabo las necesidades basicas de un animal, comer, moverse, conseguir territorio, atacar a la otra especie y reproducirse.
+  Se podran modificar los parametros de las prioridades de los peces apra conseguir conductas distintas.
