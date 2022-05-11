@@ -36,4 +36,20 @@ El acuario se formara a traves de una malla que simula el sustrato marino con su
  - Rocas de deshove: Lugar al que acuden los peces para reproducirse, los alevines preferiran mantenerse cerca de estas zonas ya que son lugares seguros.
  - Zona abierta: Espacio abierto sin ningún elemento, los peces habitaran estas zonas para ganar territorio o las usaran de paso.
 
+## El agente Pez
 
+La entidad principal de la aplicación, se distinguiran por tipo de familia (color) y tendran 4 estados; (huevo, alevin, joven, adulto)
+
+### Estados y comportamientos:
+#### Estados
+  - Huevo: Como huevo no tendra comportamiento, mas que eclosionar al cumplir su tiempo de encubación.
+  - Alevin: Como alevin no tendra necesidades, ya que se alimentan de sus padres, merodearan al rededor de la zona de deshove pués se sienten seguros en ella, cuando se acerca un pez que no es de su familia huyen al cobijo de un adulto ya que pueden ser comidos al instante.
+  - Joven: (80 HP) Como Joven desempeñara todas las funciones de un adulto salvo reproducirse, aún no esta listo para ello.
+  - Adulto: (100 HP)
+
+#### Comportamientos:
+  - Merodear: deambula por un cuadrante para controlarlo.
+  - Comer: Busca alimento según su dieta y la situación.
+  - Huir: Huye buscando cobijo en otros aliados.
+  - Atacar: Ataca a un pez de otra famila, para hacerle daño, defender los alevines o comerselo.
+  - Reproducirse: Busca una pareja en una zona de deshove y hacen una puesta.
