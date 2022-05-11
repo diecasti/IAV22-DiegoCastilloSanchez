@@ -53,3 +53,20 @@ La entidad principal de la aplicación, se distinguiran por tipo de familia (col
   - Huir: Huye buscando cobijo en otros aliados.
   - Atacar: Ataca a un pez de otra famila, para hacerle daño, defender los alevines o comerselo.
   - Reproducirse: Busca una pareja en una zona de deshove y hacen una puesta.
+
+#### Necesidades:
+  - Hambre
+  - Espacio
+  - Peligro
+  - Poblacion
+
+## Psudocodigo
+
+### Arbol de decisiones
+
+### Sistema de Navegación
+
+#### Detección de colisiones
+#### Deambular
+#### Huir
+#### Perseguir
