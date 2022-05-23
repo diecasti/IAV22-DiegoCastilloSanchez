@@ -47,10 +47,11 @@ namespace es.ucm.fdi.iav.rts
 
         public bool get8Vicinity = false;
         public float cellSizeX;
+        public float cellSizeY;
         public float cellSizeZ;
 
-        public Vector2 BottomLeft;
-        public Vector2 TopRight;
+        public Vector3 BottomLeft;
+        public Vector3 TopRight;
 
         [Range(0, Mathf.Infinity)]
         public float defaultCost = 1f;
@@ -59,9 +60,10 @@ namespace es.ucm.fdi.iav.rts
 
         public int numCols;
         public int numRows;
+        public int numLines;
         public GameObject movepoint;
 
-        GameObject[,] debugMap;
+        GameObject[,,] debugMap;
         public GameObject debugPrefabParent = new GameObject();
         public GameObject getDebugParent() { return debugPrefabParent; }
         GameObject debugPrefab;
@@ -88,21 +90,24 @@ namespace es.ucm.fdi.iav.rts
             {
                 int j = 0;
                 int i = 0;
+                int k = 0;
                 int id = 0;
 
-                vertices = new List<Vertex>(numRows * numCols);
-                neighbors = new List<List<Vertex>>(numRows * numCols);
-                costs = new List<List<float>>(numRows * numCols);
+                vertices = new List<Vertex>(numRows * numCols * numLines);
+                neighbors = new List<List<Vertex>>(numRows * numCols * numLines);
+                costs = new List<List<float>>(numRows * numCols * numLines);
 
                 cellSizeX = Math.Abs(BottomLeft.x - TopRight.x) / numCols;
-                cellSizeZ = Math.Abs(BottomLeft.y - TopRight.y) / numRows;
+                cellSizeZ = Math.Abs(BottomLeft.z - TopRight.z) / numRows;
+                cellSizeY = Math.Abs(BottomLeft.y - TopRight.y) / numLines;
 
-                debugMap = new GameObject[numRows, numCols];
+                debugMap = new GameObject[numRows, numCols, numLines];
+                for (k = 0; k < numLines; k++)
                 for (i = 0; i < numRows; i++)
                 {
                     for (j = 0; j < numCols; j++)
                     {
-                        id = GridToId(j, i);
+                        id = GridToId(j, i, k);
 
                         Vertex v = new Vertex();    //!null
                         v.id = id;
@@ -112,9 +117,9 @@ namespace es.ucm.fdi.iav.rts
 
                         if (debugPrefab != null)
                         {
-                            debugMap[j, i] = Instantiate(debugPrefab, new Vector3(i * cellSizeX + BottomLeft.x, 0, j * cellSizeZ + BottomLeft.y), Quaternion.identity) as GameObject;
-                            debugMap[j, i].transform.localScale = new Vector3(cellSizeX, 1, cellSizeZ);
-                            debugMap[j, i].transform.parent = debugPrefabParent.transform;
+                            debugMap[j, i,k] = Instantiate(debugPrefab, new Vector3(i * cellSizeX + BottomLeft.x, k * cellSizeY + BottomLeft.y, j * cellSizeZ + BottomLeft.z), Quaternion.identity) as GameObject;
+                            debugMap[j, i,k].transform.localScale = new Vector3(cellSizeX, cellSizeY, cellSizeZ);
+                            debugMap[j, i,k].transform.parent = debugPrefabParent.transform;
                         }
                     }
                 }
@@ -232,7 +237,7 @@ namespace es.ucm.fdi.iav.rts
 
 
 
-        public int GridToId(int x, int y)
+        public int GridToId(int x, int y, int k)
         {
             return Math.Max(numRows, numCols) * y + x;
         }

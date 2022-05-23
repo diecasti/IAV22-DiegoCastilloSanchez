@@ -11,6 +11,7 @@
 
 using UnityEngine;
 
+
 namespace UCM.IAV.Movimiento
 {
 
@@ -19,17 +20,38 @@ namespace UCM.IAV.Movimiento
     /// </summary>
     public class Huir : ComportamientoAgente
     {
-        public float RotationSpeed = 1;
+        public float RotationSpeed = 30;
         private Quaternion targetRotation;
+
+        public GameObject arrayDelEnemigo;
+
         /// <summary>
         /// Obtiene la dirección
         /// </summary>
         /// <returns></returns>
         public override Direccion GetDireccion()
         {
-            // Si fuese un comportamiento de dirección dinámico en el que buscásemos alcanzar cierta velocidad en el agente, se tendría en cuenta la velocidad actual del agente y se aplicaría sólo la aceleración necesaria
-            // Vector3 deltaV = targetVelocity - body.velocity;
-            // Vector3 accel = deltaV / Time.deltaTime;
+        
+            //encontraral enemigo ams cercano
+            foreach (Agente co in arrayDelEnemigo.transform.GetComponentsInChildren<Agente>())
+            {
+                if (objetivo == null)
+                {
+                    objetivo = co.gameObject;
+                }
+                else
+                {
+                    //medir la distancia
+                    float distanceObjetivo = Vector3.Distance(objetivo.transform.position, transform.position);
+                    float distanceCo = Vector3.Distance(co.gameObject.transform.position, transform.position);
+                    if (distanceCo < distanceObjetivo)
+                    {
+                        objetivo = co.gameObject;
+                    }
+                }
+            }
+
+
 
 
             Direccion direccion = new Direccion();
