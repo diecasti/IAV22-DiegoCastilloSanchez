@@ -13,6 +13,8 @@ namespace UCM.IAV.Movimiento
         public float RotationSpeed = 1;
         private Quaternion targetRotation;
 
+        float timeNoFood = 0;
+
         /// <summary>
         /// Obtiene la dirección
         /// </summary>
@@ -37,6 +39,25 @@ namespace UCM.IAV.Movimiento
                     }
                 }
             }
+            if (objetivo == null)
+            {
+                //no ahy comida que hacemos?
+                //atacar a la otra especie para que muera y de comida
+                //aumentaremos el estres del animal
+                timeNoFood += Time.deltaTime;
+                if (timeNoFood > 3.0f)
+                {
+                    GetComponent<Necesidades>().extres += 1;
+                    timeNoFood = 0;
+                }
+
+
+            }
+            else
+            {
+                timeNoFood = 0;
+            }
+
 
 
             Direccion direccion = new Direccion();

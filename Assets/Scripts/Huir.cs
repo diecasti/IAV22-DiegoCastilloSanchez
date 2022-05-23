@@ -23,7 +23,6 @@ namespace UCM.IAV.Movimiento
         public float RotationSpeed = 30;
         private Quaternion targetRotation;
 
-        public GameObject arrayDelEnemigo;
 
         /// <summary>
         /// Obtiene la dirección
@@ -32,8 +31,8 @@ namespace UCM.IAV.Movimiento
         public override Direccion GetDireccion()
         {
         
-            //encontraral enemigo ams cercano
-            foreach (Agente co in arrayDelEnemigo.transform.GetComponentsInChildren<Agente>())
+            //encontraral enemigo mas cercano
+            foreach (Agente co in transform.parent.GetComponent<contrario>().contra.GetComponentsInChildren<Agente>())
             {
                 if (objetivo == null)
                 {
