@@ -5,12 +5,13 @@ using UnityEngine;
 public class Necesidades : MonoBehaviour
 {
     [SerializeField]
-    float foodnecesity = 20;
+    float foodnecesity = 50;
     [SerializeField]
     float minAmenaza = 20;
     [SerializeField]
     float minEspacio = 20;
-
+    [SerializeField]
+    float minComidaReproduccion = 50;
     [SerializeField]
     public float comida { get; set; } = 15;
     [SerializeField]
@@ -70,6 +71,12 @@ public class Necesidades : MonoBehaviour
             actions["Explorar"] = (float)(((minEspacio - espacio) / minEspacio) * 100.0f);
         }
         else actions["Explorar"] = 0.1f;
+
+        if (comida > minComidaReproduccion)
+        {
+            actions["Deshovar"] = 1.0f;
+        }
+        else actions["Deshovar"] = 0.0f;
 
 
     }

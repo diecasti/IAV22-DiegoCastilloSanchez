@@ -25,11 +25,11 @@ public class EatTask : Action
     }
     public override void OnStart()
     {
-        GetComponent<Seguir>().enabled = true;
+        GetComponent<Comer>().enabled = true;
     }
     public override void OnEnd()
     {
-        GetComponent<Seguir>().enabled = false;
+        GetComponent<Comer>().enabled = false;
         base.OnEnd();
     }
     
