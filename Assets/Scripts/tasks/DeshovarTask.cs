@@ -9,13 +9,13 @@ using UCM.IAV.Movimiento;
  * Accion de seguir a la cantante, cuando la alcanza devuelve Success
  */
 
-public class EatTask : Action
+public class DeshovarTask : Action
 {
     Necesidades necesities;
 
     public override float GetUtility()
     {
-        return necesities.prioridadComer();
+        return necesities.prioridadDeshovar();
 
     }
 

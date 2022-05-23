@@ -8,6 +8,9 @@
    Autor: Federico Peinado 
    Contacto: email@federicopeinado.com
 */
+
+using UnityEngine;
+
 namespace UCM.IAV.Movimiento
 {
 
@@ -16,6 +19,8 @@ namespace UCM.IAV.Movimiento
     /// </summary>
     public class Huir : ComportamientoAgente
     {
+        public float RotationSpeed = 1;
+        private Quaternion targetRotation;
         /// <summary>
         /// Obtiene la dirección
         /// </summary>
@@ -26,12 +31,16 @@ namespace UCM.IAV.Movimiento
             // Vector3 deltaV = targetVelocity - body.velocity;
             // Vector3 accel = deltaV / Time.deltaTime;
 
+
             Direccion direccion = new Direccion();
-            direccion.lineal = transform.position - objetivo.transform.position;
+            direccion.lineal = /*objetivo.transform.position - */transform.forward;
             direccion.lineal.Normalize();
             direccion.lineal *= agente.aceleracionMax;
 
             // Podríamos meter una rotación automática en la dirección del movimiento, si quisiéramos
+
+            targetRotation = Quaternion.LookRotation(transform.position - objetivo.transform.position);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * RotationSpeed);
             return direccion;
         }
     }

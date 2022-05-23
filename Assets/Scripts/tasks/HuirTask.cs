@@ -9,27 +9,26 @@ using UCM.IAV.Movimiento;
  * Accion de seguir a la cantante, cuando la alcanza devuelve Success
  */
 
-public class EatTask : Action
+public class HuirTask : Action
 {
     Necesidades necesities;
 
     public override float GetUtility()
     {
-        return necesities.prioridadComer();
+        return necesities.prioridadHuir();
 
     }
-
     public override void OnAwake()
     {
         necesities = GetComponent<Necesidades>();
     }
     public override void OnStart()
     {
-        GetComponent<Seguir>().enabled = true;
+        GetComponent<Huir>().enabled = true;
     }
     public override void OnEnd()
     {
-        GetComponent<Seguir>().enabled = false;
+        GetComponent<Huir>().enabled = false;
         base.OnEnd();
     }
     
@@ -37,7 +36,7 @@ public class EatTask : Action
 
     public override TaskStatus OnUpdate()
     {
-        if (necesities.foodSatisfied())
+        if (necesities.isSafe())
         {
             return TaskStatus.Success;
         }

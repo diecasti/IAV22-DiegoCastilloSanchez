@@ -229,8 +229,8 @@ GameObject:
   - component: {fileID: 635709776}
   - component: {fileID: 635709775}
   - component: {fileID: 635709782}
-  - component: {fileID: 635709781}
   - component: {fileID: 635709774}
+  - component: {fileID: 635709784}
   - component: {fileID: 635709780}
   - component: {fileID: 635709779}
   - component: {fileID: 635709777}
@@ -258,6 +258,7 @@ MonoBehaviour:
   peso: 1
   prioridad: 1
   objetivo: {fileID: 1393539816}
+  RotationSpeed: 30
 --- !u!114 &635709775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,22 +375,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635709773}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &635709781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635709773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31d528350b5284442b2bf1003caf5293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  peso: 1
-  prioridad: 1
-  objetivo: {fileID: 0}
-  RotationSpeed: 20
 --- !u!114 &635709782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodnecesity: 20
+  minAmenaza: 20
+  minEspacio: 20
 --- !u!114 &635709783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,13 +418,19 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(-21842.2617,-17913.4316)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.SelectorEvaluator","NodeData":{"Offset":"(-139.073,193.607513)"},"ID":1,"Name":"Selector
-        Evaluator","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EatTask","NodeData":{"Offset":"(-93.1417542,165.3217)"},"ID":2,"Name":"Eat
-        Task","Instant":true}]},"DetachedTasks":[{"Type":"BehaviorDesigner.Runtime.Tasks.PrioritySelector","NodeData":{"Offset":"(-21485.5156,-17717.2617)"},"ID":3,"Name":"Priority
-        Selector","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(-21613.8086,-17729.6)"},"ID":4,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.ParallelComplete","NodeData":{"Offset":"(-21504.8086,-17971.0762)"},"ID":5,"Name":"Parallel
-        Complete","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.ParallelSelector","NodeData":{"Offset":"(-21579.28,-17854.0547)"},"ID":6,"Name":"Parallel
-        Selector","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.TaskGuard","NodeData":{"Offset":"(-21637.498,-17990.043)"},"ID":7,"Name":"Task
-        Guard","Instant":true,"SharedIntmaxTaskAccessCount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolwaitUntilTaskAvailable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}}]}'
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(-21842.2617,-17913.4316)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-2.06913757,180.453491)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.UtilitySelector","NodeData":{"Offset":"(-0.645179749,185.483887)","WatchedFields":["abortType"]},"ID":2,"Name":"Utility
+        Selector","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"EatTask","NodeData":{"Offset":"(-149.565292,325.7143)"},"ID":3,"Name":"Eat
+        Task","Instant":true},{"Type":"HuirTask","NodeData":{"Offset":"(-32.3389664,331.4261)"},"ID":4,"Name":"Huir
+        Task","Instant":true},{"Type":"AtackTask","NodeData":{"Offset":"(90,330)"},"ID":5,"Name":"Atack
+        Task","Instant":true},{"Type":"DeshovarTask","NodeData":{"Offset":"(210,330)"},"ID":6,"Name":"Deshovar
+        Task","Instant":true},{"Type":"DeambualrTask","NodeData":{"Offset":"(340,330)"},"ID":7,"Name":"Deambualr
+        Task","Instant":true}]}]},"DetachedTasks":[{"Type":"BehaviorDesigner.Runtime.Tasks.PrioritySelector","NodeData":{"Offset":"(-20953.2617,-17717.2617)"},"ID":8,"Name":"Priority
+        Selector","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(-21070.1914,-17729.6)"},"ID":9,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.ParallelComplete","NodeData":{"Offset":"(-20972.5547,-17971.0762)"},"ID":10,"Name":"Parallel
+        Complete","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.ParallelSelector","NodeData":{"Offset":"(-21047.0254,-17854.0547)"},"ID":11,"Name":"Parallel
+        Selector","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.TaskGuard","NodeData":{"Offset":"(-21105.2441,-17990.043)"},"ID":12,"Name":"Task
+        Guard","Instant":true,"SharedIntmaxTaskAccessCount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolwaitUntilTaskAvailable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.SelectorEvaluator","NodeData":{"Offset":"(-22090,-17710)"},"ID":13,"Name":"Selector
+        Evaluator","Instant":true,"AbortTypeabortType":"None"},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-20965.8125,-17557.0977)"},"ID":14,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Idle","NodeData":{"Offset":"(160,125)"},"ID":15,"Name":"Idle","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.ReturnSuccess","NodeData":{"Offset":"(-21114.8438,-17535.4844)"},"ID":16,"Name":"Return
+        Success","Instant":true}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -449,6 +442,22 @@ MonoBehaviour:
       Version: 1.7.2
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
+--- !u!114 &635709784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635709773}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04975c86d88a65349a8c27aebc417ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  peso: 1
+  prioridad: 1
+  objetivo: {fileID: 1072283386}
+  RotationSpeed: 30
 --- !u!1 &687511467
 GameObject:
   m_ObjectHideFlags: 0

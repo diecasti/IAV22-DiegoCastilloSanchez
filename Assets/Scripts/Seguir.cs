@@ -8,6 +8,8 @@
    Autor: Federico Peinado 
    Contacto: email@federicopeinado.com
 */
+using UnityEngine;
+
 namespace UCM.IAV.Movimiento
 {
 
@@ -16,6 +18,10 @@ namespace UCM.IAV.Movimiento
     /// </summary>
     public class Seguir : ComportamientoAgente
     {
+
+        public float RotationSpeed = 1;
+        private Quaternion targetRotation;
+
         /// <summary>
         /// Obtiene la dirección
         /// </summary>
@@ -32,8 +38,10 @@ namespace UCM.IAV.Movimiento
             direccion.lineal *= agente.aceleracionMax;
 
             // Podríamos meter una rotación automática en la dirección del movimiento, si quisiéramos
-            this.GetComponent<Mirar>().objetivo = objetivo;
-            this.GetComponent<Mirar>().doRotate();
+
+            targetRotation = Quaternion.LookRotation(objetivo.transform.position - transform.position);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * RotationSpeed);
+
             return direccion;
         }
 

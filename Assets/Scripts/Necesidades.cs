@@ -6,17 +6,21 @@ public class Necesidades : MonoBehaviour
 {
     [SerializeField]
     float foodnecesity = 20;
+    [SerializeField]
+    float minAmenaza = 20;
+    [SerializeField]
+    float minEspacio = 20;
 
     [SerializeField]
-    public float comida { get; set; } = 0;
+    public float comida { get; set; } = 15;
     [SerializeField]
-    float espacio { get; set; } = 0;
+    float espacio { get; set; } = 100;
     [SerializeField]
-    float amenaza { get; set; } = 0;
+    float amenaza { get; set; } = 25;
 
 
     Hashtable actions;
-    
+
     private void OnAwake()
     {
     }
@@ -53,10 +57,19 @@ public class Necesidades : MonoBehaviour
 
         if (comida < foodnecesity)
         {
-            actions["Comer"] = (float)((foodnecesity - comida) / foodnecesity);
+            actions["Comer"] = (float)(((foodnecesity - comida) / foodnecesity) * 100.0f);
         }
-        else actions["Comer"] = 0;
-
+        else actions["Comer"] = 0.0f;
+        if (amenaza > minAmenaza)
+        {
+            actions["Huir"] = (float)(((amenaza - minAmenaza) / minAmenaza) * 100.0f);
+        }
+        else actions["Huir"] = 0.0f;
+        if (espacio < minEspacio)
+        {
+            actions["Explorar"] = (float)(((minEspacio - espacio) / minEspacio) * 100.0f);
+        }
+        else actions["Explorar"] = 0.1f;
 
 
     }
@@ -68,6 +81,11 @@ public class Necesidades : MonoBehaviour
     {
         return comida > foodnecesity;
     }
+    public bool isSafe()
+    {
+        return amenaza < minAmenaza;
+    }
+
 
     public float prioridadComer()
     {
