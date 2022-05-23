@@ -36,5 +36,10 @@ namespace UCM.IAV.Movimiento
             this.GetComponent<Mirar>().doRotate();
             return direccion;
         }
+
+        private void OnDisable()
+        {
+            
+        }
     }
 }
