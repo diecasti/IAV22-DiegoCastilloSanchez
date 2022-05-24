@@ -40,15 +40,9 @@ El acuario se formara a traves de una malla que simula el sustrato marino con su
 
 La entidad principal de la aplicación, se distinguiran por tipo de familia (color) y tendran 4 estados; (huevo, alevin, joven, adulto)
 
-### Estados y comportamientos:
-#### Estados
-  - Huevo: Como huevo no tendra comportamiento, mas que eclosionar al cumplir su tiempo de encubación.
-  - Alevin: Como alevin no tendra necesidades, ya que se alimentan de sus padres, merodearan al rededor de la zona de deshove pués se sienten seguros en ella, cuando se acerca un pez que no es de su familia huyen al cobijo de un adulto ya que pueden ser comidos al instante.
-  - Joven: (80 HP) Como Joven desempeñara todas las funciones de un adulto salvo reproducirse, aún no esta listo para ello.
-  - Adulto: (100 HP)
+### Comportamientos:
 
 #### Comportamientos:
-  - Merodear: deambula por un cuadrante para controlarlo.
   - Comer: Busca alimento según su dieta y la situación.
   - Huir: Huye buscando cobijo en otros aliados.
   - Atacar: Ataca a un pez de otra famila, para hacerle daño, defender los alevines o comerselo.
@@ -58,11 +52,27 @@ La entidad principal de la aplicación, se distinguiran por tipo de familia (col
   - Hambre
   - Espacio
   - Peligro
-  - Poblacion
+  - Extres
+
+Segun estas necesidades y los requisitos minimos de estas, los distintos comportamientos adquiriran una prioridad distinta que el agente tendra en cuenta a la hora de realizar sus acciones.
 
 ## Psudocodigo
 
 ### Arbol de decisiones
+
+un arbol de decisiones mediante tareas y prioridades, las prioridades se definen en el apartado de necesidades mediante porcentajes, siendo aquellas con un numero mayor las mas importantes
+
+``` mermaid
+  graph TD;
+  Entry-->Repeat;
+  Repeat-->Priority_Selector;
+  Priority_Selector-->Task_Comer;
+  Priority_Selector-->Task_Huir;
+  Priority_Selector-->Task_Atacar;
+  Priority_Selector-->Task_Deshovar;
+  
+  
+```
 
 ### Sistema de Navegación
 
@@ -70,3 +80,5 @@ La entidad principal de la aplicación, se distinguiran por tipo de familia (col
 #### Deambular
 #### Huir
 #### Perseguir
+#### Atacar
+#### Comer
